@@ -3,165 +3,134 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Saurabh | Engineer Portfolio</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --bg: #0d1117;
-      --bg-alt: #161b22;
-      --primary: #58a6ff;
-      --text: #c9d1d9;
-      --text-alt: #8b949e;
-      --accent: #f0b429;
-      --radius: 12px;
-      --transition: 0.3s ease;
-    }
-    * {box-sizing: border-box;margin: 0;padding: 0;}
-    body {font-family: 'Inter', sans-serif;background: var(--bg);color: var(--text);line-height: 1.6;}
-    img {max-width: 100%;display: block;border-radius: var(--radius);}
-    a {color: var(--primary);text-decoration: none;transition: var(--transition);}
-    a:hover {color: var(--accent);}
-    header {background: var(--bg-alt);position: sticky;top: 0;z-index: 1000;}
-    .container {max-width: 1080px;margin: auto;padding: 0 1rem;}
-    nav {display: flex;align-items: center;justify-content: space-between;height: 64px;}
-    .logo {font-weight: 700;font-size: 1.1rem;letter-spacing: 0.5px;color: var(--primary);}
-    .nav-links {display: flex;gap: 1.5rem;}
-    .nav-links a {font-size: 0.9rem;text-transform: uppercase;}
-    /* Mobile */
-    #menu-toggle {display: none;background: none;border: none;color: var(--primary);font-size: 1.5rem;}
-    @media (max-width: 640px) {
-      .nav-links {position: absolute;top: 64px;left: 0;right: 0;background: var(--bg-alt);flex-direction: column;gap: 0;border-bottom: 1px solid #30363d;display: none;}
-      .nav-links.open {display: flex;}
-      .nav-links a {padding: 0.75rem 1rem;}
-      #menu-toggle {display: block;}
-    }
-    /* Hero */
-    #hero {display: flex;flex-direction: column;align-items: center;text-align: center;padding: 5rem 1rem 4rem;gap: 1.5rem;}
-    #hero h1 {font-size: clamp(2rem, 5vw, 3rem);font-weight: 700;}
-    #hero p {max-width: 640px;color: var(--text-alt);}
-    /* Section Titles */
-    section {padding: 4rem 1rem;}
-    .section-title {font-size: 1.5rem;font-weight: 500;margin-bottom: 2rem;color: var(--primary);text-align: center;}
-    /* About */
-    #about .content {max-width: 800px;margin: auto;color: var(--text-alt);}
-    /* Projects */
-    .projects-grid {display: grid;grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));gap: 1.5rem;}
-    .project-card {background: var(--bg-alt);padding: 1.25rem;border-radius: var(--radius);transition: var(--transition);display: flex;flex-direction: column;height: 100%;}
-    .project-card:hover {transform: translateY(-4px);}
-    .project-card h3 {margin: 0.5rem 0 0.25rem;font-size: 1.1rem;}
-    .project-card p {flex-grow: 1;font-size: 0.85rem;color: var(--text-alt);}
-    .tags {margin-top: 0.5rem;display: flex;flex-wrap: wrap;gap: 0.4rem;}
-    .tag {background: #30363d;font-size: 0.7rem;padding: 0.25rem 0.5rem;border-radius: var(--radius);}
-    /* Experience */
-    .timeline {border-left: 2px solid var(--primary);padding-left: 1.5rem;display: grid;gap: 2rem;}
-    .timeline-item {position: relative;}
-    .timeline-item::before {content: "";position: absolute;left: -1.1rem;top: 0;width: 0.8rem;height: 0.8rem;background: var(--primary);border-radius: 50%;}
-    .timeline-item h4 {margin-bottom: 0.25rem;}
-    .timeline-item span {display: block;font-size: 0.8rem;color: var(--text-alt);margin-bottom: 0.5rem;}
-    /* Contact */
-    #contact .socials {display: flex;justify-content: center;gap: 1rem;font-size: 1.2rem;}
-    /* Footer */
-    footer {text-align: center;padding: 2rem 1rem;color: var(--text-alt);font-size: 0.8rem;}
-  </style>
+  <title>Saurabh | Portfolio</title>
+
+  <!-- Orbitron + Exo -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&family=Exo:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-  <header>
-    <div class="container">
-      <nav>
-        <span class="logo">Saurabh.dev</span>
-        <button id="menu-toggle">☰</button>
-        <div class="nav-links" id="nav-links">
-          <a href="#hero">Home</a>
-          <a href="#about">About</a>
-          <a href="#projects">Projects</a>
-          <a href="#experience">Experience</a>
-          <a href="#contact">Contact</a>
+  <!-- -------- PANELS -------- -->
+  <main class="panels">
+    <!-- HERO -->
+    <section id="tab-home" class="panel active">
+      <canvas id="stars"></canvas>
+      <div class="slide hero">
+        <div class="hero-text">
+        <!-- outcome‑oriented headline -->
+        <h1>Welcome to my corner of the multiverse.</h1><br>
+
+        <!-- shorter, name‑accented sub‑line -->
+        <p class="hero-sub">
+            I’m <span class="name-accent">Saurabh</span>, an AI researcher turning fresh discoveries into production‑ready systems.
+        </p>
+
+        <!-- social icons -->
+        <div class="hero-links">
+            <a href="https://github.com/saurabhbhadada"  aria-label="GitHub" target="_blank" rel="noopener">
+            <!-- 24 × 24 viewBox keeps icon crisp, no crop -->
+            <svg class="icon" viewBox="0 0 24 24">
+                <path d="M12 0.3a11.7 11.7 0 0 0-3.7 22.8c.6.1.8-.2.8-.6v-2.1
+                c-3.2.7-3.9-1.4-3.9-1.4-.5-1.2-1.2-1.5-1.2-1.5-1-.6.1-.6.1-.6
+                1 .1 1.5 1 1.5 1 .9 1.4 2.4 1 3 .8.1-.6.3-1 .6-1.3-2.7-.3-5.3-1.3-5.3-5.9
+                a4.4 4.4 0 0 1 1.1-3 4 4 0 0 1 .1-3s1-.3 3.2 1.2a11 11 0 0 1 5.9 0
+                c2.2-1.5 3.2-1.2 3.2-1.2a4 4 0 0 1 .1 3 4.4 4.4 0 0 1 1.1 3
+                c0 4.6-2.7 5.6-5.3 5.9.4.3.7.9.7 1.7v2.5c0 .4.2.7.8.6A11.7 11.7 0 0 0 12 .3Z"/>
+            </svg>
+            </a>
+
+            <a href="https://www.linkedin.com/in/saurabh-bhadada-iitd/" aria-label="LinkedIn" target="_blank" rel="noopener">
+            <svg class="icon" viewBox="0 0 24 24">
+                <path d="M4.98 3.5a2.5 2.5 0 1 1-.01 5 2.5 2.5 0 0 1 .01-5Zm.02 4.73H2V21h3V8.23Zm4.94 0h2.86v1.7h.04c.4-.74 1.36-1.52 2.8-1.52C17 8.4 18 10 18 13v8h-3v-6.6c0-1.56-.03-3.55-2.2-3.55-2.2 0-2.54 1.7-2.54 3.46V21H8V8.23Z"/>
+            </svg>
+            </a>
         </div>
-      </nav>
-    </div>
-  </header>
+        </div>
 
-  <main>
-    <!-- Hero -->
-    <section id="hero">
-      <h1>Hello, I'm <span style="color:var(--accent)">Saurabh</span> 👋</h1>
-      <p>Machine Learning &amp; Software Engineer passionate about building scalable AI products and delightful developer experiences.</p>
-      <a href="#projects" style="display:inline-block;margin-top:1rem;background:var(--primary);color:#fff;padding:0.75rem 1.5rem;border-radius:var(--radius);font-weight:500;">View My Work</a>
-    </section>
-
-    <!-- About -->
-    <section id="about">
-      <h2 class="section-title">About Me</h2>
-      <div class="content">
-        <p>Write a short bio here. Highlight your background, interests, and what drives you as an engineer. You can update this later as your journey evolves.</p>
       </div>
     </section>
 
-    <!-- Projects -->
-    <section id="projects">
-      <h2 class="section-title">Selected Projects</h2>
-      <div class="projects-grid">
-        <article class="project-card">
-          <h3>Bookshelf – Offline AI Note‑Taking App</h3>
-          <p>An offline-first markdown app using semantic search and local language models. Supports emoji picker, TF‑IDF ranking, and Whisper voice input.</p>
-          <div class="tags">
-            <span class="tag">React</span><span class="tag">IndexedDB</span><span class="tag">LLM</span>
+    <!-- EXPERIENCE -->
+    <section id="tab-exp" class="panel">
+      <div class="slide">
+        <div class="slide-text terminal">
+          <h2>$ experience</h2>
+          <p><span class="cursor">█</span>&nbsp;R&amp;D  Lead — Sumitomo Mitsui Finance and Leasing Company, Ltd. (2020–Present)</p>
+          <p><span class="cursor">█</span>&nbsp;ML Engineer — Cookpad Inc. (2017–2020)</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section id="tab-edu" class="panel">
+      <div class="slide alt">
+        <div class="slide-text terminal">
+          <h2>$ education</h2>
+          <p><span class="cursor">█</span>&nbsp;Integrated M.Tech Mathematics and Computing — IIT Delhi (2012-2017)</p>
+          <p><span class="cursor">█</span>&nbsp; AIR 486 | JEE 2012</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="tab-proj" class="panel">
+      <div class="slide">
+        <div class="slide-text">
+          <h2>Projects</h2>
+          <div class="cards">
+            <article class="card">
+              <h3>Bookshelf</h3>
+              <p>Offline‑first markdown note app with semantic search.</p>
+            </article>
+            <article class="card">
+              <h3>Healthy&nbsp;Minds</h3>
+              <p>Doctor‑facing note generator &amp; therapy‑session organiser.</p>
+            </article>
           </div>
-        </article>
-        <article class="project-card">
-          <h3>CharakDB – Therapy Notes Generator</h3>
-          <p>End‑to‑end system with Django &amp; Celery that transcribes therapy sessions and auto‑drafts notes, feedback, and prescriptions.</p>
-          <div class="tags">
-            <span class="tag">Django</span><span class="tag">OpenAI</span><span class="tag">AWS</span>
-          </div>
-        </article>
-        <!-- Duplicate project-card markup for more projects -->
-      </div>
-    </section>
-
-    <!-- Experience -->
-    <section id="experience">
-      <h2 class="section-title">Experience</h2>
-      <div class="timeline">
-        <div class="timeline-item">
-          <h4>Senior R&D Engineer – XYZ Corp</h4>
-          <span>Apr 2023 – Present</span>
-          <p>Leading model fine‑tuning and deployment projects, including Vision‑Language models optimized for browsers and edge devices.</p>
-        </div>
-        <div class="timeline-item">
-          <h4>ML Engineer – ABC Start‑up</h4>
-          <span>Jan 2021 – Mar 2023</span>
-          <p>Developed scalable MLOps pipelines and shipped real‑time recommendations to millions of users.</p>
         </div>
       </div>
     </section>
 
-    <!-- Contact -->
-    <section id="contact">
-      <h2 class="section-title">Get in Touch</h2>
-      <p style="text-align:center;max-width:640px;margin:auto;color:var(--text-alt);">Whether you want to talk about a project, job opportunity, or just grab a coffee, my inbox is always open.</p>
-      <div class="socials" style="margin-top:1.5rem;">
-        <a href="mailto:you@example.com" aria-label="Email">📧</a>
-        <a href="https://github.com/username" target="_blank" aria-label="GitHub">🐙</a>
-        <a href="https://www.linkedin.com/in/username" target="_blank" aria-label="LinkedIn">💼</a>
+    <!-- COFFEE -->
+    <section id="tab-coffee" class="panel">
+      <div class="slide alt">
+        <div class="slide-text">
+          <h2>☕&nbsp;Favourite Coffee Spots</h2>
+          <ul class="coffee">
+            <li>Fuglen — Hanegi koen</li>
+            <li>Camelback — Espresso</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="tab-about" class="panel">
+      <div class="slide">
+        <div class="slide-text">
+          <h2>About&nbsp;Me</h2>
+          <p>If I’m squinting, I’m debugging CUDA kernels or judging espresso crema.</p>
+        </div>
+        <!-- rectangular, larger photo -->
+        <img src="images/IMG_8496.jpeg" alt="Me with Mt Fuji" class="about-img" />
       </div>
     </section>
   </main>
 
-  <footer>
-    © <span id="year"></span> Saurabh Bhadada. Built with ❤ and caffeine.
-  </footer>
+  <!-- -------- FIXED TAB BAR -------- -->
+  <nav class="tabbar">
+    <button type="button" data-tab="home"   class="tab-btn active">Home</button>
+    <button type="button" data-tab="exp"    class="tab-btn">Experience</button>
+    <button type="button" data-tab="edu"    class="tab-btn">Education</button>
+    <button type="button" data-tab="proj"   class="tab-btn">Projects</button>
+    <button type="button" data-tab="coffee" class="tab-btn">Coffee</button>
+    <button type="button" data-tab="about"  class="tab-btn">About</button>
+  </nav>
 
-  <script>
-    // Mobile nav toggle
-    const toggle = document.getElementById('menu-toggle');
-    const navLinks = document.getElementById('nav-links');
-    toggle.addEventListener('click', () => navLinks.classList.toggle('open'));
-
-    // Dynamic year
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
+  <!-- JS deferred so DOM is ready -->
+  <script src="js/main.js" defer></script>
 </body>
 </html>
