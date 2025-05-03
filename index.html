@@ -54,15 +54,99 @@
     </section>
 
     <!-- EXPERIENCE -->
-    <section id="tab-exp" class="panel">
-      <div class="slide">
-        <div class="slide-text terminal">
-          <h2>$ experience</h2>
-          <p><span class="cursor">█</span>&nbsp;R&amp;D  Lead — Sumitomo Mitsui Finance and Leasing Company, Ltd. (2020–Present)</p>
-          <p><span class="cursor">█</span>&nbsp;ML Engineer — Cookpad Inc. (2017–2020)</p>
-        </div>
+    <!-- ========= EXPERIENCE PANEL ========= -->
+<section id="tab-exp" class="panel exp-panel">
+    <!-- Slides container -->
+    <div class="exp-slides">
+      <!-- Slide 1 -->
+      <div id="exp-1" class="slide">
+        <h3>R&D (AI) Team Lead — Sumitomo Mitsui Finance and Leasing Co. Ltd., Tokyo</h3>
+        <h4>AI-powered Document Processing platforms : EasyOCR and Kessansho AI</h4>
+        <ul>
+          <li>Led the research and development of machine learning models for <span class="links"><a href="https://digitallab.smfl.co.jp/easyocr" target="_blank">SMFL's EasyOCR</a> and <a href="https://digitallab.smfl.co.jp/kessansho-ai" target="_blank">Kessansho AI</a></span> focusing on advanced OCR and document understanding capabilities.</li>
+          <li> These models were designed to accurately extract and structure data from complex documents, such as financial statements and diverse business forms, enhancing automation and efficiency in document processing workflows.</li>
+        </ul>
+
+        <h4>AI-Powered Receipt Stamp Verification for Pharmaceutical Orders </h4>
+        <ul>
+          <li>Developed and trained machine learning models to <span class="links"><a href="https://digitallab.smfl.co.jp/usecase/1_yonyaku">automate the verification of over 3 million receipt stamps annually for pharmaceutical drug orders</a></span>, significantly reducing manual workload and enhancing operational efficiency.</li>
+          <li>Implemented advanced image recognition techniques to accurately identify and validate receipt stamps, ensuring high accuracy and reliability in the verification process, which is critical for compliance and traceability in pharmaceutical distribution.</li>
+        </ul>
       </div>
-    </section>
+
+      <!-- Slide 2 -->
+      <div id="exp-2" class="slide">
+        <h3>Machine Learning Engineer — Cookpad Inc</h3>
+        <p class="date">Sep 2017 – Apr 2020</p>
+        <h4>Smart Recipe Editor (Assistive Input) | Nov 2018 – Apr 2019</h4>
+        <ul>
+          <li>Built text-embedding & retrieval model predicting ingredients from titles.</li>
+          <li>Integrated into iOS editor, cutting input time by 11% and aiding 28% of new recipes.</li>
+          <li>Deployed in Cookpad iOS v19.6.0—still live today.</li>
+        </ul>
+        <p class="links">
+          Blog Entries:
+          <a href="https://techlife.cookpad.com/entry/2019/02/20/120219" target="_blank">Feature Deployment</a> |
+          <a href="https://techlife.cookpad.com/entry/2019/03/29/115500" target="_blank">Time Reduction</a>
+        </p>
+
+        <h4>Joint Embedding for Images & Title Text | Aug 2019 – Dec 2019</h4>
+        <ul>
+          <li>Created joint embedding for text↔image retrieval with 72% top-4 precision.</li>
+          <li>Tested in staging; shelved due to complexity & permission issues.</li>
+        </ul>
+        <h4>Logistics, Cookpad Mart | Oct 2019 – Mar 2020</h4>
+        <ul>
+          <li>Developed Vehicle Routing Problem solver optimizing 600+ delivery routes within 2 hr limit.</li>
+          <li>Ran production trial to assist staff with routing policies.</li>
+        </ul>
+      </div>
+
+      <!-- Slide 3 -->
+      <!-- <div id="exp-3" class="slide">
+
+      </div> -->
+
+      <!-- Slide 4 -->
+      <!-- <div id="exp-4" class="slide alt">
+
+      </div> -->
+    </div>
+
+    <!-- Right-side index -->
+    <nav class="exp-index">
+      <ul>
+        <li data-target="exp-1" class="active"> R&D (AI) Lead, SMFL, Tokyo</li>
+        <li data-target="exp-2">Machine Learning Engineer, Cookpad</li>
+        <!-- <li data-target="exp-3">Logistics</li>
+        <li data-target="exp-4">Data Eng & BI</li> -->
+      </ul>
+    </nav>
+  </section>
+
+
+    <!-- PROJECTS -->
+    <section id="tab-proj" class="panel">
+        <div class="slide">
+          <div class="slide-text">
+            <h2>Projects</h2>
+            <div class="cards">
+                <a href="https://thebookshelf.ai" target="_blank" rel="noopener noreferrer">
+                    <article class="card">
+                        <h3> The Bookshelf</h3>
+                        <p> AI-Powered Offline‑first markdown note taking app.</p>
+                    </article>
+                </a>
+                <a href="https://www.healthyminds.live/" target="_blank" rel="noopener noreferrer">
+                    <article class="card">
+                        <h3>Healthy&nbsp;Minds</h3>
+                        <p>AI Copilot for mental health professionals.</p>
+                    </article>
+                </a>
+            </div>
+          </div>
+        </div>
+      </section>
 
     <!-- EDUCATION -->
     <section id="tab-edu" class="panel">
@@ -75,24 +159,6 @@
       </div>
     </section>
 
-    <!-- PROJECTS -->
-    <section id="tab-proj" class="panel">
-      <div class="slide">
-        <div class="slide-text">
-          <h2>Projects</h2>
-          <div class="cards">
-            <article class="card">
-              <h3>Bookshelf</h3>
-              <p>Offline‑first markdown note app with semantic search.</p>
-            </article>
-            <article class="card">
-              <h3>Healthy&nbsp;Minds</h3>
-              <p>Doctor‑facing note generator &amp; therapy‑session organiser.</p>
-            </article>
-          </div>
-        </div>
-      </div>
-    </section>
 
     <!-- COFFEE -->
     <section id="tab-coffee" class="panel">
@@ -124,8 +190,8 @@
   <nav class="tabbar">
     <button type="button" data-tab="home"   class="tab-btn active">Home</button>
     <button type="button" data-tab="exp"    class="tab-btn">Experience</button>
-    <button type="button" data-tab="edu"    class="tab-btn">Education</button>
     <button type="button" data-tab="proj"   class="tab-btn">Projects</button>
+    <button type="button" data-tab="edu"    class="tab-btn">Education</button>
     <button type="button" data-tab="coffee" class="tab-btn">Coffee</button>
     <button type="button" data-tab="about"  class="tab-btn">About</button>
   </nav>
