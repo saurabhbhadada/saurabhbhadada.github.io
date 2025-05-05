@@ -56,6 +56,14 @@
     opacity: 0;
     transition: opacity .4s ease;
   }
+  .panel > canvas {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    opacity: 0.6; /* subtle effect */
+  }
+
   .panel.active {
     visibility: visible;
     opacity: 1;
@@ -234,7 +242,8 @@
     height: 100%;
     padding: 3rem 4rem;
     box-sizing: border-box;
-    background: var(--bg);
+    /* background: var(--bg); */
+    background: none;
   }
 
   /* Blinking cursor before each slide heading */
