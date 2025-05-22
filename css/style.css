@@ -433,27 +433,41 @@
     transform: rotateY(12deg);
   }
 
-  /* Responsive Adjustments */
-  @media (max-width: 700px) {
-    .slide.about {
-      flex-direction: column;
-      align-items: flex-start;
-    }
+/* FINAL mobile stack for the About section  ------------------- */
+@media (max-width: 700px) {
 
-    .about-text,
-    .about-photo {
-      flex: 1 1 100%;
-    }
-
-    .about-img {
-      width: 100%;
-      max-width: 100%;
-    }
+  /* 1️⃣ Stack children vertically and centre them */
+  .slide.about {
+    flex-direction: row;      /* text first, photo second   */
+    align-items: center;         /* horizontal centring        */
+    text-align: center;          /* nice for paragraph too     */
+    gap: 1.8rem;                 /* space between text & photo */
   }
+
+  /* 2️⃣ Make both halves occupy full width */
+  .about-text,
+  .about-photo {
+    flex: 0 0 100%;              /* forget the old 45 % basis  */
+    max-width: 100%;
+  }
+
+  /* 3️⃣ Nudge photo below text and size it sensibly */
+  .about-photo {
+    order: 2;                    /* explicit, just in case     */
+  }
+  .about-img {
+    width: 70vw;                 /* fills most of screen       */
+    max-width: 320px;            /* but never gets enormous    */
+    height: auto;
+  }
+}
+
+
+
 
   /* --------------------
      RESPONSIVE TWEAKS
-     -------------------- */
+     --------------------  */
   @media (max-width: 700px) {
     .slide {
       flex-direction: column;
@@ -465,3 +479,182 @@
       padding: 4rem 6%;
     }
   }
+
+  /* -------- Mobile Guides --------- */
+  .mobile-guide {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 0;
+    right: 0;
+    transform: translateY(-50%);
+    justify-content: space-between;
+    padding: 0 1rem;
+    font-family: var(--font-body);
+    color: var(--accent);
+    z-index: 100;
+    pointer-events: none;
+  }
+
+  .arrow {
+    background: rgba(12,12,12,0.9);
+    border: 1px solid var(--accent-soft);
+    color: var(--accent);
+    padding: 0.3rem 0.7rem;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    animation: fadeOut 4s ease-out forwards;
+    box-shadow: 0 0 8px var(--accent-soft);
+  }
+
+  @keyframes fadeOut {
+    0%, 60% { opacity: 1; }
+    100% { opacity: 0; }
+  }
+
+@media (max-width: 700px) {
+  .mobile-guide {
+    display: flex;
+  }
+
+  .panel {
+    overflow-y: auto;
+    padding: 2rem 4%;
+  }
+
+  .tabbar {
+    font-size: 0.6rem;
+  }
+
+  .slide {
+    padding: 2rem 1rem;
+  }
+
+  .neon-h2 {
+    font-size: 1.5rem;
+  }
+
+  .card {
+    padding: 1rem;
+  }
+
+  .slide-text, .terminal {
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+
+  .exp-index {
+    display: none;
+  }
+
+  .exp-slides {
+    padding-right: 0;
+  }
+
+  .scroll-guide {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: var(--font-body);
+    color: var(--accent);
+    font-size: 0.9rem;
+    opacity: 0.8;
+    background: rgba(0,0,0,0.4);
+    padding: 0.3rem 0.6rem;
+    border-radius: 4px;
+    animation: bounce 1.5s infinite;
+    pointer-events: none;
+    z-index: 50;
+  }
+
+  @keyframes bounce {
+    0%, 100% { transform: translate(-50%, 0); }
+    50% { transform: translate(-50%, 8px); }
+  }
+  .exp-slides .slide {
+    padding: 2rem 1rem;
+    height: auto;
+    min-height: 100%;
+  }
+
+  .exp-slides .slide h3, .exp-slides .slide h4 {
+    font-size: 1rem;
+    line-height: 1.3;
+  }
+
+  .exp-slides .slide ul {
+    margin-left: 1rem;
+    line-height: 1.5;
+  }
+
+  .exp-slides .date {
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .slide ul li {
+    margin-bottom: 0.7rem;
+  }
+}
+
+.tabbar {
+  overflow-x: auto;
+  overflow-y: hidden;
+  justify-content: flex-start;
+  white-space: nowrap;
+}
+
+.tab-btn {
+  flex: 0 0 auto;
+  padding: 0.5rem 1rem;
+}
+
+/* Wide-screen alignment fix */
+@media (min-width: 701px) {
+  .tabbar {
+    display: flex;
+    justify-content: space-around; /* Even spacing */
+    overflow-x: visible;
+  }
+
+  .tab-btn {
+    flex: 1;
+    padding: 0.5rem 1rem;
+  }
+}
+
+
+/* Scroll guide (blinking indicator for wide screen) */
+.scroll-guide {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--font-body);
+  color: var(--accent);
+  font-size: 0.9rem;
+  background: rgba(0,0,0,0.4);
+  padding: 0.3rem 0.6rem;
+  border-radius: 4px;
+  animation: blinkScroll 1s infinite alternate;
+  pointer-events: none;
+  z-index: 50;
+}
+
+@keyframes blinkScroll {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Hide scroll guide when scrolling starts */
+.scroll-guide.hidden {
+  display: none;
+}
+
+/* Hide scroll guide on mobile */
+@media (max-width: 700px) {
+  .scroll-guide {
+    display: none !important;
+  }
+}

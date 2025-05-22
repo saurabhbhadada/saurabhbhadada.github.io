@@ -1,24 +1,40 @@
 (() => {
-    /* -------- Tab Switching & Starfield -------- */
-    const tabbar = document.querySelector('.tabbar');
-    const panels = document.querySelectorAll('.panel');
+  /* -------- Tab Switching & Starfield -------- */
+  const tabbar = document.querySelector('.tabbar');
+  const panels = document.querySelectorAll('.panel');
 
-    tabbar.addEventListener('click', e => {
-      const btn = e.target.closest('.tab-btn');
-      if (!btn) return;
-      tabbar.querySelectorAll('.tab-btn')
-        .forEach(b => b.classList.toggle('active', b === btn));
-      const id = 'tab-' + btn.dataset.tab;
-      panels.forEach(p => p.classList.toggle('active', p.id === id));
-      const panel = document.getElementById(id);
-      if (panel) panel.scrollTop = 0;
-    });
+  tabbar.addEventListener('click', e => {
+    const btn = e.target.closest('.tab-btn');
+    if (!btn) return;
 
-    const canvas = document.getElementById('stars');
-    const ctx = canvas.getContext?.('2d');
-    if (!ctx) return;
+    tabbar.querySelectorAll('.tab-btn')
+      .forEach(b => b.classList.toggle('active', b === btn));
 
+    const id = 'tab-' + btn.dataset.tab;
+
+    panels.forEach(p => p.classList.toggle('active', p.id === id));
+
+    const panel = document.getElementById(id);
+    if (panel) panel.scrollTop = 0;
+
+    // Scroll selected tab into view (for mobile usability)
+    btn.scrollIntoView({ behavior: 'smooth', inline: 'center' });
+
+    // Reset scroll indicator if experience panel selected
+    if (btn.dataset.tab === 'exp') {
+      const expSlides = document.querySelector('.exp-slides');
+      const scrollGuide = document.querySelector('.scroll-guide');
+      expSlides.scrollTop = 0;
+      scrollGuide?.classList.remove('hidden');
+    }
+  });
+
+  /* -------- Starfield Background -------- */
+  const canvas = document.getElementById('stars');
+  const ctx = canvas.getContext?.('2d');
+  if (ctx) {
     let stars = [];
+
     function resize() {
       canvas.width = innerWidth;
       canvas.height = innerHeight;
@@ -46,30 +62,56 @@
       });
       requestAnimationFrame(draw);
     })();
+  }
 
-    /* -------- Experience Slide Navigation & Highlight -------- */
-    const slides = document.querySelector('.exp-slides');
-    const items = document.querySelectorAll('.exp-index li');
+  /* -------- Swipe Gestures Support -------- */
+  let touchStartX = 0, touchEndX = 0;
 
-    items.forEach(li => {
-      li.addEventListener('click', () => {
-        const target = document.getElementById(li.dataset.target);
-        if (target) {
-          target.scrollIntoView({ behavior: 'smooth' });
-        }
-      });
+  document.body.addEventListener('touchstart', e => {
+    touchStartX = e.changedTouches[0].screenX;
+  });
+
+  document.body.addEventListener('touchend', e => {
+    touchEndX = e.changedTouches[0].screenX;
+    const tabs = Array.from(document.querySelectorAll('.tab-btn'));
+    const activeIdx = tabs.findIndex(t => t.classList.contains('active'));
+
+    if (touchEndX < touchStartX - 40 && activeIdx < tabs.length - 1) {
+      tabs[activeIdx + 1].click();
+    }
+    if (touchEndX > touchStartX + 40 && activeIdx > 0) {
+      tabs[activeIdx - 1].click();
+    }
+  });
+
+  /* -------- Experience Slide Navigation & Highlight -------- */
+  const expSlides = document.querySelector('.exp-slides');
+  const expItems = document.querySelectorAll('.exp-index li');
+
+  expItems.forEach(li => {
+    li.addEventListener('click', () => {
+      const target = document.getElementById(li.dataset.target);
+      target?.scrollIntoView({ behavior: 'smooth' });
     });
+  });
 
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(ent => {
-        const id = ent.target.id;
-        const idx = document.querySelector(`.exp-index li[data-target="${id}"]`);
-        if (idx) idx.classList.toggle('active', ent.isIntersecting);
-      });
-    }, { root: document.querySelector('.exp-slides'), threshold: 0.6 });
+  const expObserver = new IntersectionObserver(entries => {
+    entries.forEach(ent => {
+      const id = ent.target.id;
+      document.querySelector(`.exp-index li[data-target="${id}"]`)
+        ?.classList.toggle('active', ent.isIntersecting);
+    });
+  }, { root: expSlides, threshold: 0.6 });
 
-    document.querySelectorAll('.slide').forEach(s => observer.observe(s));
-  })();
+  document.querySelectorAll('.exp-slides .slide').forEach(s => expObserver.observe(s));
+
+  // Hide scroll indicator when experience panel scrolled
+  const scrollGuide = document.querySelector('.scroll-guide');
+  expSlides?.addEventListener('scroll', () => {
+    scrollGuide?.classList.add('hidden');
+  });
+})();
+
 
   // Store state per canvas
   function setupPixelArtCanvas(canvasId, initParticlesFunc, drawParticlesFunc) {
